@@ -1,0 +1,41 @@
+{
+  "name": "nitinkaware/laravel-dependable-softdelete",
+  "type": "library",
+  "description": "An open source Tabler UI preset",
+  "keywords": [
+    "laravel",
+    "tabler",
+    "tabler-laravel"
+  ],
+  "homepage": "https://github.com/nitinkaware/tabler-laravel-vue-preset",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Nitin Kaware",
+      "email": "nitin.kaware1@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^7.1",
+    "cesaramirez/laravel-tabler": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "NitinKaware\\TablerPreset\\": "src"
+    }
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    },
+    "laravel": {
+      "providers": [
+        "nitinkaware\\Presets\\Tabler\\TablerPresetServiceProvider"
+      ]
+    }
+  }
+}
