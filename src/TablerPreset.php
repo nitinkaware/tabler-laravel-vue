@@ -3,9 +3,7 @@
 namespace NitinKaware\TablerPreset;
 
 use cesaramirez\Presets\Tabler\TablerPreset as BaseTablerPreset;
-use Illuminate\Container\Container;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\Arr;
 
 class TablerPreset extends BaseTablerPreset
 {
@@ -43,8 +41,22 @@ class TablerPreset extends BaseTablerPreset
             );
         }
 
-        copy(__DIR__.'/tabler-stub/bootstrap.js', static::getResourcePath('js/bootstrap.js'));
-        copy(__DIR__.'/tabler-stub/app.js', static::getResourcePath('js/app.js'));
-        (new Filesystem())->copyDirectory(__DIR__.'/pages', resource_path('js'));
+        copy(__DIR__ . '/tabler-stub/bootstrap.js', static::getResourcePath('js/bootstrap.js'));
+        copy(__DIR__ . '/tabler-stub/app.js', static::getResourcePath('js/app.js'));
+        (new Filesystem())->copyDirectory(__DIR__ . '/pages', resource_path('js'));
+    }
+
+    /**
+     * Update the given package array.
+     *
+     * @param array $packages
+     * @return array
+     */
+    protected static function updatePackageArray(array $packages)
+    {
+        return [
+                'form-object' => '^1.7.1',
+                'vue-router' => '^3.0.6',
+            ] + $packages;
     }
 }
