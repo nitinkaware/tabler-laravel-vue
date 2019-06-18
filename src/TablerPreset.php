@@ -43,6 +43,7 @@ class TablerPreset extends BaseTablerPreset
 
         copy(__DIR__ . '/tabler-stub/bootstrap.js', static::getResourcePath('js/bootstrap.js'));
         copy(__DIR__ . '/tabler-stub/app.js', static::getResourcePath('js/app.js'));
+        copy(__DIR__ . '/tabler-stub/routes.js', static::getResourcePath('js/routes.js'));
         (new Filesystem())->copyDirectory(__DIR__ . '/pages', resource_path('js'));
     }
 
