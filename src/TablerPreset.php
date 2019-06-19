@@ -5,8 +5,8 @@ namespace NitinKaware\TablerPreset;
 use cesaramirez\Presets\Tabler\TablerPreset as BaseTablerPreset;
 use Illuminate\Filesystem\Filesystem;
 
-class TablerPreset extends BaseTablerPreset
-{
+class TablerPreset extends BaseTablerPreset {
+
     /**
      * Install the preset.
      */
@@ -31,7 +31,7 @@ class TablerPreset extends BaseTablerPreset
      */
     protected static function updateBootstrapping()
     {
-        if (!self::expectsAssetsFolder()) {
+        if ( !self::expectsAssetsFolder()) {
             file_put_contents(base_path('webpack.mix.js'),
                 str_replace(
                     'assets/',
@@ -44,6 +44,8 @@ class TablerPreset extends BaseTablerPreset
         copy(__DIR__ . '/tabler-stub/bootstrap.js', static::getResourcePath('js/bootstrap.js'));
         copy(__DIR__ . '/tabler-stub/app.js', static::getResourcePath('js/app.js'));
         copy(__DIR__ . '/tabler-stub/routes.js', static::getResourcePath('js/routes.js'));
+        copy(__DIR__ . '/tabler-stub/.babelrc', base_path('.babelrc'));
+        copy(__DIR__ . '/tabler-stub/webpack.mix.js', base_path('webpack.mix.js'));
 
         (new Filesystem())->copyDirectory(__DIR__ . '\tabler-stub\Pages', resource_path('js\Pages'));
     }
@@ -52,13 +54,15 @@ class TablerPreset extends BaseTablerPreset
      * Update the given package array.
      *
      * @param array $packages
+     *
      * @return array
      */
     protected static function updatePackageArray(array $packages)
     {
         return [
-                'form-object' => '^1.7.1',
-                'vue-router' => '^3.0.6',
+                'form-object'                         => '^1.7.1',
+                'vue-router'                          => '^3.0.6',
+                '@babel/plugin-syntax-dynamic-import' => '*',
             ] + $packages;
     }
 }
