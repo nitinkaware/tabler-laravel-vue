@@ -9,7 +9,7 @@ import Form from 'form-object';
 try {
     window.$ = window.jQuery = require("jquery/dist/jquery.slim");
 
-    require("tabler-stub/bootstrap");
+    require("bootstrap");
 } catch (e) {
 }
 
@@ -40,7 +40,6 @@ if (token) {
     );
 }
 
-window.Swal = require('sweetalert2');
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting

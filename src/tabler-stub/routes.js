@@ -1,9 +1,9 @@
 export default [
-    {
-        path: '/',
-        name: 'home',
-        component: () => import('./Pages/Home/Index')
-    },
+    // {
+    //     path: '/',
+    //     name: 'home',
+    //     component: () => import('./Pages/Home/Index')
+    // },
     
     {
         path: '/login',

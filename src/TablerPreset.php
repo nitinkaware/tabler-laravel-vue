@@ -47,7 +47,7 @@ class TablerPreset extends BaseTablerPreset {
         copy(__DIR__ . '/tabler-stub/.babelrc', base_path('.babelrc'));
         copy(__DIR__ . '/tabler-stub/webpack.mix.js', base_path('webpack.mix.js'));
 
-        (new Filesystem())->copyDirectory(__DIR__ . '\tabler-stub\Pages', resource_path('js\Pages'));
+        (new Filesystem())->copyDirectory(__DIR__ . '/tabler-stub/Pages', resource_path('js/Pages'));
     }
 
     /**
