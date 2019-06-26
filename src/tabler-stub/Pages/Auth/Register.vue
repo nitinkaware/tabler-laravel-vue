@@ -111,7 +111,7 @@
             register() {
                 this.form.post('/register', this.registerForm)
                     .then((response) => {
-                        window.location = route('home');
+                        window.location = '/home';
                     })
             }
         }

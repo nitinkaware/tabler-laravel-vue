@@ -109,7 +109,7 @@
                 this.form.post('/login', this.loginForm)
                     .then((response) => {
                         Form.defaults.axios.defaults.headers.common["X-CSRF-TOKEN"] = response.csrfToken;
-                        window.location = '/';
+                        window.location = '/home';
                     })
             }
         }
