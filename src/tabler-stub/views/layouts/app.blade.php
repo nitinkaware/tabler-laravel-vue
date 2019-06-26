@@ -21,8 +21,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}"
           rel="stylesheet">
-    <link rel="shortcut icon"
-          href="https://cdn.myntassets.com/skin1/icons/favicon.ico">
+    <link rel="shortcut icon" href="#">
 </head>
 <body>
 <div id="app"
@@ -40,10 +39,6 @@
 
 
                     <div class="d-flex order-lg-2 ml-auto">
-
-                        @auth
-                            <cart-menu :prop-count="{{ auth()->user()->carts()->count() }}"></cart-menu>
-                        @endauth
 
                         @guest
 
@@ -96,48 +91,8 @@
                                             Profile
                                         </a>
 
-                                        <router-link to="/my/wishlist"
-                                                     class="dropdown-item">
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                 width="18"
-                                                 height="18"
-                                                 viewBox="0 0 24 24"
-                                                 fill="none"
-                                                 stroke="currentColor"
-                                                 stroke-width="2"
-                                                 stroke-linecap="round"
-                                                 stroke-linejoin="round"
-                                                 class="feather feather-list tw-inline"
-                                                 style="margin-left: -16px;">
-                                                <line x1="8"
-                                                      y1="6"
-                                                      x2="21"
-                                                      y2="6"></line>
-                                                <line x1="8"
-                                                      y1="12"
-                                                      x2="21"
-                                                      y2="12"></line>
-                                                <line x1="8"
-                                                      y1="18"
-                                                      x2="21"
-                                                      y2="18"></line>
-                                                <line x1="3"
-                                                      y1="6"
-                                                      x2="3"
-                                                      y2="6"></line>
-                                                <line x1="3"
-                                                      y1="12"
-                                                      x2="3"
-                                                      y2="12"></line>
-                                                <line x1="3"
-                                                      y1="18"
-                                                      x2="3"
-                                                      y2="18"></line>
-                                            </svg>
-                                            My Wishlist
-                                        </router-link>
-
                                         <div class="dropdown-divider"></div>
+
                                         <a class="dropdown-item"
                                            href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
@@ -200,29 +155,55 @@
                     </div>
                     <div class="col-lg order-lg-first">
                         <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
-                            @foreach($menus as $menu)
-                                <li class="nav-item">
-                                    <a class="nav-link"
-                                       @if($menu->subCategories->isNotEmpty())
-                                       href="javascript:void(0)"
-                                       data-toggle="dropdown"
-                                       @else
-                                       href="{!! $menu->slug !!}" @endif>
-                                        {!! $menu->name !!}
-                                    </a>
-
-                                    @if($menu->subCategories->isNotEmpty())
-                                        <div class="dropdown-menu dropdown-menu-arrow">
-                                            @foreach($menu->subCategories as $menuChild)
-                                                <router-link to="/products/{{ $menuChild->slug }}"
-                                                             class="dropdown-item">
-                                                    {{ $menuChild->name }}
-                                                </router-link>
-                                            @endforeach
-                                        </div>
-                                    @endif
-                                </li>
-                            @endforeach
+                            <li class="nav-item">
+                                <a href="{{ route('home')}}" class="nav-link {{ request()->is('home') ? 'active' : ''}}">
+                                    <i class="fe fe-home"></i> Home
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="dropdown"><i class="fe fe-box"></i> Interface</a>
+                                <div class="dropdown-menu dropdown-menu-arrow">
+                                    <a href="#" class="dropdown-item ">Cards design</a>
+                                    <a href="#" class="dropdown-item ">Charts</a>
+                                    <a href="#" class="dropdown-item ">Pricing cards</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" data-toggle="dropdown"><i class="fe fe-calendar"></i> Components</a>
+                                <div class="dropdown-menu dropdown-menu-arrow">
+                                    <a href="#" class="dropdown-item ">Maps</a>
+                                    <a href="#" class="dropdown-item ">Icons</a>
+                                    <a href="#" class="dropdown-item ">Store</a>
+                                    <a href="#" class="dropdown-item ">Blog</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" data-toggle="dropdown"><i class="fe fe-file"></i> Pages</a>
+                                <div class="dropdown-menu dropdown-menu-arrow">
+                                    <a href="#" class="dropdown-item active">Profile</a>
+                                    <a href="#" class="dropdown-item ">Login</a>
+                                    <a href="#" class="dropdown-item ">Register</a>
+                                    <a href="#" class="dropdown-item ">Forgot password</a>
+                                    <a href="#" class="dropdown-item ">400 error</a>
+                                    <a href="#" class="dropdown-item ">401 error</a>
+                                    <a href="#" class="dropdown-item ">403 error</a>
+                                    <a href="#" class="dropdown-item ">404 error</a>
+                                    <a href="#" class="dropdown-item ">500 error</a>
+                                    <a href="#" class="dropdown-item ">503 error</a>
+                                    <a href="#" class="dropdown-item ">Email</a>
+                                    <a href="#" class="dropdown-item ">Empty page</a>
+                                    <a href="#" class="dropdown-item ">RTL mode</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link"><i class="fe fe-check-square"></i> Forms</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link"><i class="fe fe-image"></i> Gallery</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link"><i class="fe fe-file-text"></i> Documentation</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
