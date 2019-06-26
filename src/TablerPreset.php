@@ -56,13 +56,17 @@ class TablerPreset extends BaseTablerPreset {
      */
     protected static function scaffoldAuth()
     {
-        file_put_contents(app_path('Http/Controllers/HomeController.php'), static::compileControllerStub());
+        file_put_contents(app_path('Http/Controllers/HomeController.php'), static::compileHomeControllerStub());
+        file_put_contents(app_path('Http/Controllers/Auth/LoginController.php'), static::compileLoginControllerStub());
+        file_put_contents(app_path('Http/Controllers/Auth/RegisterController.php'), static::compileRegisterControllerStub());
+
         file_put_contents(
             base_path('routes/web.php'),
             "\nAuth::routes();\n\nRoute::get('/home', 'HomeController@index')->name('home');\n\n",
             FILE_APPEND
         );
-        (new Filesystem())->copyDirectory(__DIR__.'/tabler-stubs/views', resource_path('views'));
+
+        (new Filesystem())->copyDirectory(__DIR__.'/tabler-stub/views', resource_path('views'));
     }
 
     /**
@@ -70,12 +74,40 @@ class TablerPreset extends BaseTablerPreset {
      *
      * @return string
      */
-    protected static function compileControllerStub()
+    protected static function compileHomeControllerStub()
     {
         return str_replace(
             '{{namespace}}',
             Container::getInstance()->getNamespace(),
-            file_get_contents(__DIR__.'/tabler-stubs/controllers/HomeController.stub')
+            file_get_contents(__DIR__.'/tabler-stub/controllers/HomeController.stub')
+        );
+    }
+
+    /**
+     * Compiles the LoginController stub.
+     *
+     * @return string
+     */
+    protected static function compileLoginControllerStub()
+    {
+        return str_replace(
+            '{{namespace}}',
+            Container::getInstance()->getNamespace(),
+            file_get_contents(__DIR__.'/tabler-stub/controllers/Auth/LoginController.stub')
+        );
+    }
+
+    /**
+     * Compiles the LoginController stub.
+     *
+     * @return string
+     */
+    protected static function compileRegisterControllerStub()
+    {
+        return str_replace(
+            '{{namespace}}',
+            Container::getInstance()->getNamespace(),
+            file_get_contents(__DIR__.'/tabler-stub/controllers/Auth/RegisterController.stub')
         );
     }
 
