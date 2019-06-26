@@ -13,7 +13,6 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    @routes
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"
             defer></script>

@@ -109,7 +109,7 @@
         },
         methods: {
             register() {
-                this.form.post(route('register'), this.registerForm)
+                this.form.post('/register', this.registerForm)
                     .then((response) => {
                         window.location = route('home');
                     })

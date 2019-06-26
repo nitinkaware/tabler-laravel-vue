@@ -106,7 +106,7 @@
         },
         methods: {
             login() {
-                this.form.post(route('login'), this.loginForm)
+                this.form.post('/login', this.loginForm)
                     .then((response) => {
                         Form.defaults.axios.defaults.headers.common["X-CSRF-TOKEN"] = response.csrfToken;
                         window.location = '/';
