@@ -34,7 +34,7 @@
     },
     "laravel": {
       "providers": [
-        "nitinkaware\\Presets\\Tabler\\TablerPresetServiceProvider"
+        "NitinKaware\\TablerPreset\\TablerPresetServiceProvider"
       ]
     }
   }
